@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Timer Website</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <h1>Timer Website</h1>
+  <br>
+  <div class="settings-heading">Set Settings</div>
+  <div class="grid-container">
+    <div># Sets</div>
+    <input type="number" id="nrSetsInput" value=5>
+    <div>Set Break Length [s]</div>
+    <input type="number" id="breakLengthSetsInput" value=90>
+  </div>
+  <br>
+  <div class="settings-heading">Repetion Settings</div>
+  <div class="grid-container">
+    <div># Repetitions/Set</div>
+    <input type="number" id="nrRepsPerSetInput" value=6>
+    <div>Repetion Length [s]</div>
+    <input type="number" id="secsPerRepInput" value=35>
+    <div>Repetion Break Length [s]</div>
+    <input type="number" id="breakLengthRepsInput" value=20>
+  </div>
+  <br>
+  <br>
+  <br>
+  <div>
+    <button id="run-botton" class="button" onclick="run()">Run</button>
+    <button id="pause-resume-botton" class="button" onclick="pause_resume()">Pause</button>
+    <button id="stop-button" class="button" onclick="stop()">Stop</button>
+  </div>
+  <br>
+  <br>
+  <br>
+  <div class="grid-container">
+    <div class="run-display">Set</div>
+    <div id="set-display" class="run-display">-/-</div>
+    <div class="run-display">Repetiton</div>
+    <div id="rep-display" class="run-display">-/-</div>
+    <div class="run-display">Time Elapsed</div>
+    <div id="time-elapsed-display" class="run-display">--:--</div>
+    <div class="run-display">Time Remaining</div>
+    <div id="time-remaining-display" class="run-display">--:--</div>
+    <div class="run-display">Progress</div>
+    <div id="progress-display" class="run-display">-- %</div>
+  </div>
+
+
+  <script src="script.js"></script>
+</body>
+
+</html>
