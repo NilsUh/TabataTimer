@@ -23,6 +23,7 @@ class CTabataTimerElement {
   }
 
   start() {
+    document.getElementById("triple-bell").play();
     this.setTimerDisplay();
   }
 
