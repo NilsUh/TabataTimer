@@ -2,42 +2,41 @@
 
 <html>
   <head>
-    <title>Timer Website</title>
+    <title>Tabata Timer Website</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
 
   <body>
-    <h1>Timer Website</h1>
+    <h1>Tabata Timer Website</h1>
     <br />
     <div class="settings-heading">Set Settings</div>
     <div class="grid-container">
       <div># Sets</div>
-      <input type="number" id="nrSetsInput" value="5" />
+      <input type="number" id="nrSetsInput" value="2" />
       <div>Set Break Length [s]</div>
-      <input type="number" id="breakLengthSetsInput" value="90" />
+      <input type="number" id="breakLengthSetsInput" value="7" />
     </div>
     <br />
     <div class="settings-heading">Repetion Settings</div>
     <div class="grid-container">
       <div># Repetitions/Set</div>
-      <input type="number" id="nrRepsPerSetInput" value="6" />
+      <input type="number" id="nrRepsPerSetInput" value="3" />
       <div>Repetion Length [s]</div>
-      <input type="number" id="secsPerRepInput" value="35" />
+      <input type="number" id="secsPerRepInput" value="5" />
       <div>Repetion Break Length [s]</div>
-      <input type="number" id="breakLengthRepsInput" value="20" />
+      <input type="number" id="breakLengthRepsInput" value="3" />
     </div>
     <br />
     <br />
     <br />
     <div>
-      <button id="run-botton" class="button">Run</button>
-      <button id="pause-resume-botton" class="button" onclick="pause_resume()">
-        Pause
-      </button>
-      <button id="stop-button" class="button" onclick="stop()">Stop</button>
+      <button id="run-button" class="button">Run</button>
+      <button id="pause-resume-button" class="button">Pause</button>
+      <button id="stop-button" class="button">Stop</button>
     </div>
     <br />
     <br />
+    <div id="timer-display" class="timer-display">Not running!</div>
     <br />
     <div class="grid-container">
       <div class="run-display">Set</div>

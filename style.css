@@ -17,11 +17,17 @@ h1 {
 }
 
 .run-display {
-  font-size: x-large;
+  font-size: large;
   font-weight: bolder;
 }
 
 .button {
   font-size: x-large;
   font-weight: bolder;
+}
+
+.timer-display {
+  font-size: xxx-large;
+  font-weight: bolder;
+  color: white;
 }
