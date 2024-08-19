@@ -168,16 +168,14 @@ class CTabataTimer {
 }
 
 function runCallback() {
-  if (tabataTimer == null) {
-    /* read inputs */
-    let nrSets = document.getElementById("nrSetsInput").value;
-    let secSetsBreak = document.getElementById("breakLengthSetsInput").value;
-    let nrReps = document.getElementById("nrRepsPerSetInput").value;
-    let secReps = document.getElementById("secsPerRepInput").value;
-    let secRepsBreak = document.getElementById("breakLengthRepsInput").value;
+  /* read inputs */
+  let nrSets = document.getElementById("nrSetsInput").value;
+  let secSetsBreak = document.getElementById("breakLengthSetsInput").value;
+  let nrReps = document.getElementById("nrRepsPerSetInput").value;
+  let secReps = document.getElementById("secsPerRepInput").value;
+  let secRepsBreak = document.getElementById("breakLengthRepsInput").value;
 
-    tabataTimer = new CTabataTimer(nrSets, secSetsBreak, nrReps, secReps, secRepsBreak);
-  }
+  tabataTimer = new CTabataTimer(nrSets, secSetsBreak, nrReps, secReps, secRepsBreak);
 }
 
 function pauseCallback() {
