@@ -1,6 +1,3 @@
-audioBellTriple = new Audio("audio/bell_triple.mp3");
-audioHammerPings = new Audio("audio/hammer_pings.mp3");
-
 function playBell() {
   audioBellTriple.play();
 }
@@ -188,6 +185,9 @@ class CTabataTimer {
 }
 
 function runCallback() {
+  audioBellTriple = new Audio("audio/bell_triple.wav");
+  audioHammerPings = new Audio("audio/hammer_pings.wav");
+
   /* read inputs */
   let nrSets = document.getElementById("nrSetsInput").value;
   let secSetsBreak = document.getElementById("breakLengthSetsInput").value;
@@ -218,6 +218,8 @@ function stopCallback() {
 }
 
 var tabataTimer = null;
+var audioBellTriple = null;
+var audioHammerPings = null;
 
 document.getElementById("pause-resume-button").disabled = true;
 document.getElementById("stop-button").disabled = true;
