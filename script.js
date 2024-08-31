@@ -99,7 +99,7 @@ class CTabataTimer {
       }
 
       if (setIdx < this.nrSets - 1) {
-        this.timerList.push(new CTabataTimerElement(secSetsBreak - 1, "green", 0, repIdx + 1, setIdx + 1, "break"));
+        this.timerList.push(new CTabataTimerElement(secSetsBreak - 1, "green", repIdx + 1, setIdx + 1, "break"));
       }
     }
 
