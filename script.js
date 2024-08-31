@@ -1,3 +1,11 @@
+function playBell() {
+  audioBellTriple.play();
+}
+
+function playPings() {
+  audioHammerPings.play();
+}
+
 function pad(num, size) {
   num = num.toString();
   while (num.length < size) num = "0" + num;
@@ -14,12 +22,13 @@ function setInputsDisabled(setValue) {
 }
 
 class CTabataTimerElement {
-  constructor(secs, color, repIdx, setIdx) {
+  constructor(secs, color, repIdx, setIdx, type) {
     this.timeRemaining = secs;
     this.isRunning = false;
     this.color = color;
     this.repIdx = repIdx;
     this.setIdx = setIdx;
+    this.type = type;
   }
 
   start() {
@@ -32,6 +41,14 @@ class CTabataTimerElement {
       this.timeRemaining--;
       this.setTimerDisplay();
       successDecrease = true;
+    }
+
+    if (this.type == "break" && this.timeRemaining == 2) {
+      playBell();
+    }
+
+    if (this.type == "repetion" && this.timeRemaining == 4) {
+      playPings();
     }
 
     return successDecrease;
@@ -60,26 +77,26 @@ class CTabataTimer {
     this.rep = 0;
     this.secReps = secReps;
     this.secRepsBreak = secRepsBreak;
-    this.preStartInterval = 5;
+    this.preStartInterval = 10;
     this.timeElapsed = 0;
     this.timeRemaining = this.preStartInterval + nrSets * nrReps * secReps + (nrSets - 1) * secSetsBreak + (nrReps - 1) * nrSets * secRepsBreak - 1;
     this.intervalId = null;
 
     this.timerListIdx = 0;
     this.timerList = [];
-    this.timerList.push(new CTabataTimerElement(this.preStartInterval - 1, "yellow", 0, 0));
+    this.timerList.push(new CTabataTimerElement(this.preStartInterval - 1, "yellow", 0, 0, "break"));
     let repIdx = 0;
     let setIdx = 0;
     for (setIdx = 0; setIdx < this.nrSets; setIdx++) {
       for (repIdx = 0; repIdx < this.nrReps; repIdx++) {
-        this.timerList.push(new CTabataTimerElement(secReps - 1, "red", repIdx, setIdx));
+        this.timerList.push(new CTabataTimerElement(secReps - 1, "red", repIdx, setIdx, "repetion"));
         if (repIdx < this.nrReps - 1) {
-          this.timerList.push(new CTabataTimerElement(secRepsBreak - 1, "green", repIdx + 1, setIdx));
+          this.timerList.push(new CTabataTimerElement(secRepsBreak - 1, "green", repIdx + 1, setIdx, "break"));
         }
       }
 
       if (setIdx < this.nrSets - 1) {
-        this.timerList.push(new CTabataTimerElement(secSetsBreak - 1, "green", 0, repIdx + 1, setIdx + 1));
+        this.timerList.push(new CTabataTimerElement(secSetsBreak - 1, "green", repIdx + 1, setIdx + 1, "break"));
       }
     }
 
@@ -168,6 +185,9 @@ class CTabataTimer {
 }
 
 function runCallback() {
+  audioBellTriple = new Audio("audio/bell_triple.wav");
+  audioHammerPings = new Audio("audio/hammer_pings.wav");
+
   /* read inputs */
   let nrSets = document.getElementById("nrSetsInput").value;
   let secSetsBreak = document.getElementById("breakLengthSetsInput").value;
@@ -198,6 +218,8 @@ function stopCallback() {
 }
 
 var tabataTimer = null;
+var audioBellTriple = null;
+var audioHammerPings = null;
 
 document.getElementById("pause-resume-button").disabled = true;
 document.getElementById("stop-button").disabled = true;
