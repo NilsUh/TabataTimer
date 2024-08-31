@@ -91,12 +91,12 @@ class CTabataTimer {
       for (repIdx = 0; repIdx < this.nrReps; repIdx++) {
         this.timerList.push(new CTabataTimerElement(secReps - 1, "red", repIdx, setIdx, "repetion"));
         if (repIdx < this.nrReps - 1) {
-          this.timerList.push(new CTabataTimerElement(secRepsBreak - 1, "green", repIdx + 1, setIdx, "break"));
+          this.timerList.push(new CTabataTimerElement(secRepsBreak - 1, "green", repIdx, setIdx, "break"));
         }
       }
 
       if (setIdx < this.nrSets - 1) {
-        this.timerList.push(new CTabataTimerElement(secSetsBreak - 1, "green", repIdx + 1, setIdx + 1, "break"));
+        this.timerList.push(new CTabataTimerElement(secSetsBreak - 1, "green", this.nrReps - 1, setIdx, "break"));
       }
     }
 
