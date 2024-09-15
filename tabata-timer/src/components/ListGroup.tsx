@@ -1,24 +1,32 @@
-function ListGroup() {
-  let items = [
-    "Set 1/3 - Round 1/2",
-    "Set 2/3 - Round 1/2",
-    "Set 3/3 - Round 1/2",
-    "Set 1/3 - Round 2/2",
-    "Set 2/3 - Round 2/2",
-    "Set 3/3 - Round 2/2",
-  ];
+import { useState } from "react";
 
-  // event handler
-  const handleClick = (event: React.MouseEvent<HTMLLIElement, MouseEvent>) =>
-    console.log(event);
+interface ListGroupProps {
+  items: string[];
+  heading: string;
+  onSelectItem: (item: string) => void;
+}
+
+function ListGroup({ items, heading, onSelectItem }: ListGroupProps) {
+  // Hook
+  const [selectedIndex, setSelectedIndex] = useState(-1);
 
   return (
     <>
-      <h1>List</h1>
+      <h1>{heading}</h1>
       {items.length === 0 && <p>No item found</p>}
       <ul className="list-group">
         {items.map((item, index) => (
-          <li className="list-group-item" key={item} onClick={handleClick}>
+          <li
+            className={
+              selectedIndex === index
+                ? "list-group-item active"
+                : "list-group-item"
+            }
+            key={item}
+            onClick={() => {
+              onSelectItem(item);
+            }}
+          >
             {item}
           </li>
         ))}
