@@ -1,12 +1,18 @@
 import Setting from "./Setting";
 
-const SettingGroup = () => {
-  const onValueChange = (name: string, newValue: number) => {
-    console.log(name + newValue);
-  };
+interface SettingsProps {
+  onValueChange: (name: string, newValue: number) => void;
+}
 
+const SettingGroup = ({ onValueChange }: SettingsProps) => {
   return (
     <div className="container text-center">
+      <Setting
+        name="Rounds"
+        defaultValue={5}
+        delta={1}
+        onValueChange={onValueChange}
+      />
       <Setting
         name="Sets/Round"
         defaultValue={6}
