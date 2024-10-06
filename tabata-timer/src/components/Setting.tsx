@@ -5,6 +5,8 @@ interface SettingsRowProps {
   name: string;
   defaultValue: number;
   delta: number;
+  min: number;
+  max: number;
   onValueChange: (name: string, newValue: number) => void;
 }
 
@@ -12,20 +14,25 @@ const Setting = ({
   name,
   defaultValue,
   delta,
-  //ToDo: Add min and max values
+  min,
+  max,
   onValueChange,
 }: SettingsRowProps) => {
   const [value, setValue] = useState(defaultValue);
 
   const onClickIncreaseCallback = () => {
-    setValue(value + delta);
-    //ToDo: Clarify why the state is not updated immediately
-    onValueChange(name, value + delta);
+    if (value + delta <= max) {
+      setValue(value + delta);
+      //ToDo: Clarify why the state is not updated immediately
+      onValueChange(name, value + delta);
+    }
   };
 
   const onClickDecreaseCallback = () => {
-    setValue(value - delta);
-    onValueChange(name, value - delta);
+    if (value - delta >= min) {
+      setValue(value - delta);
+      onValueChange(name, value - delta);
+    }
   };
 
   return (
