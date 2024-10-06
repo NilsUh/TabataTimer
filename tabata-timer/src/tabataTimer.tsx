@@ -32,8 +32,7 @@ export class TabataTimer {
       this.preStartInterval +
       this.rounds * this.setsPerRound * this.setDuration +
       (this.rounds - 1) * this.roundBreakDuration +
-      (this.setsPerRound - 1) * this.rounds * this.setBreakDuration -
-      1;
+      (this.setsPerRound - 1) * this.rounds * this.setBreakDuration;
   }
 
   getRemainingTime(): number {
