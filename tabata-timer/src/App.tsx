@@ -29,7 +29,7 @@ function App() {
       <SettingGroup onValueChange={onSettingsChanged} />
       <Controls />
       <ListGroup
-        items={["test1", "test2"]}
+        items={tabataTimer.getTaskListNames()}
         heading="Task List"
         onSelectItem={() => {
           console.log(0);
